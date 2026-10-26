@@ -46,7 +46,7 @@
   </script>
   <script>
     (function(){
-      var s=localStorage.getItem('theme'),d=window.matchMedia('(prefers-color-scheme:dark)').matches;
+      var s=null;try{s=localStorage.getItem('theme')}catch(e){}var d=window.matchMedia('(prefers-color-scheme:dark)').matches;
       document.documentElement.dataset.theme=s||(d?'dark':'light');
     })();
   </script>
@@ -58,7 +58,7 @@
     <h1>Thomas Derrien</h1>
     <p class="masthead-meta">
       PhD student in computer science<br>
-      <a href="https://www-archimedia.irisa.fr" target="_blank" rel="noopener">Archimedia</a>, IRISA, Rennes
+      <a href="https://www-archimedia.irisa.fr" target="_blank" rel="noopener">Archimedia</a>, <abbr title="Institut de recherche en informatique et systèmes aléatoires">IRISA</abbr>, Rennes
     </p>
     <p class="masthead-contact">
       <a href="mailto:thomas.derrien@irisa.fr">thomas.derrien@irisa.fr</a><br>
@@ -89,8 +89,8 @@
     <section id="news">
       <h2>News</h2>
       <ul class="news">
-        <li><span class="date">April 2026</span> FAST-MEL was accepted as a short paper at SIGIR 2026.</li>
-        <li><span class="date">October 2025</span> Started my PhD at IRISA, in the Archimedia team.</li>
+        <li><span class="date">April&nbsp;2026</span> FAST-MEL was accepted as a short paper at <abbr title="ACM Conference on Research and Development in Information Retrieval">SIGIR</abbr>&nbsp;2026.</li>
+        <li><span class="date">October&nbsp;2025</span> Started my PhD at IRISA, in the Archimedia team.</li>
       </ul>
     </section>
 
@@ -108,103 +108,80 @@
       </p>
 
       <figure class="research-figure">
-      <svg class="research-svg" viewBox="50 74 980 270" role="img" focusable="false"
-           aria-label="Abstract illustration: a bank of documents mixing text and images is linked to a knowledge base whose entities are described by text and illustrated by images; the highlighted link resolves one document to one entity.">
-        <title>Multimodal entity linking</title>
-        <defs>
-          <marker id="arr-main" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-            <path d="M0 0 L10 5 L0 10 Z" style="fill: var(--fig-accent)"/>
-          </marker>
-        </defs>
+      <svg class="research-svg" viewBox="0 0 760 300" role="img" focusable="false"
+           aria-label="Example of multimodal entity linking: in a document reading &#8220;I love Paris!&#8221; with a picture of the Eiffel Tower, the mention Paris is linked to the city of Paris rather than to Paris Hilton or to Paris of Greek mythology, among the entities of a knowledge base.">
+    <title>Multimodal entity linking</title>
+    <defs>
+      <marker id="fg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+        <path d="M0 0 L10 5 L0 10 Z" style="fill: var(--fig-accent)"/>
+      </marker>
+    </defs>
 
-        <!-- 1 · the bank of multimodal documents -->
-        <rect class="hr-panel pn-t" x="60" y="84" width="370" height="250" rx="4"/>
-        <text class="hr-title" x="245" y="112" text-anchor="middle">Multimodal documents</text>
-        <text class="hr-sub" x="245" y="134" text-anchor="middle">(text &#183; images)</text>
-        <g transform="translate(128 150) rotate(-8 59 70)">
-          <rect class="hr-doc" x="0" y="0" width="118" height="140" rx="10"/>
-          <rect class="b1" x="10" y="10" width="98" height="56" rx="8"/>
-          <circle class="hr-peak" cx="92" cy="24" r="5"/>
-          <path class="hr-peak" d="M16 66 L36 38 L56 66 Z"/>
-          <path class="hr-peak" d="M44 66 L60 46 L76 66 Z"/>
-          <rect class="hr-line" x="14" y="80" width="80" height="7" rx="3.5"/>
-          <rect class="hr-line" x="14" y="94" width="64" height="7" rx="3.5"/>
-          <rect class="hr-line" x="14" y="108" width="48" height="7" rx="3.5"/>
-        </g>
-        <g transform="translate(186 152)">
-          <rect class="hr-doc" x="0" y="0" width="118" height="140" rx="10"/>
-          <rect class="b3" x="10" y="10" width="98" height="56" rx="8"/>
-          <circle class="hr-peak" cx="92" cy="24" r="5"/>
-          <path class="hr-peak" d="M16 66 L36 38 L56 66 Z"/>
-          <path class="hr-peak" d="M44 66 L60 46 L76 66 Z"/>
-          <rect class="hr-line" x="14" y="80" width="80" height="7" rx="3.5"/>
-          <rect class="hr-line" x="14" y="94" width="64" height="7" rx="3.5"/>
-          <rect class="hr-line" x="14" y="108" width="48" height="7" rx="3.5"/>
-        </g>
-        <g transform="translate(244 156) rotate(8 59 70)">
-          <rect class="hr-doc" x="0" y="0" width="118" height="140" rx="10"/>
-          <rect class="b2" x="10" y="10" width="98" height="56" rx="8"/>
-          <circle class="hr-peak" cx="92" cy="24" r="5"/>
-          <path class="hr-peak" d="M16 66 L36 38 L56 66 Z"/>
-          <path class="hr-peak" d="M44 66 L60 46 L76 66 Z"/>
-          <rect class="hr-line" x="14" y="80" width="80" height="7" rx="3.5"/>
-          <rect class="hr-line" x="14" y="94" width="64" height="7" rx="3.5"/>
-          <rect class="hr-line" x="14" y="108" width="48" height="7" rx="3.5"/>
-        </g>
+    <rect class="fg-panel" x="1" y="10" width="298" height="282" rx="16"/>
+    <rect class="fg-panel" x="430" y="10" width="329" height="282" rx="16"/>
 
-        <!-- 2 · the multimodal knowledge base -->
-        <rect class="hr-panel pn-v" x="650" y="84" width="370" height="250" rx="4"/>
-        <text class="hr-title" x="835" y="112" text-anchor="middle">Multimodal knowledge base</text>
-        <text class="hr-sub" x="835" y="134" text-anchor="middle">(entities &#183; images)</text>
+    <g transform="rotate(-8 150 150) translate(-26 6)">
+      <rect class="fg-doc" x="75" y="52" width="150" height="196" rx="10"/>
+      <rect class="fg-img" x="85" y="62" width="130" height="92" rx="6"/>
+      <rect class="fg-bar" x="88" y="172" width="110" height="7" rx="3.5"/>
+      <rect class="fg-bar" x="88" y="188" width="90" height="7" rx="3.5"/>
+      <rect class="fg-bar" x="88" y="204" width="60" height="7" rx="3.5"/>
+    </g>
+    <g transform="rotate(7 150 150) translate(26 6)">
+      <rect class="fg-doc" x="75" y="52" width="150" height="196" rx="10"/>
+      <rect class="fg-img" x="85" y="62" width="130" height="92" rx="6"/>
+      <rect class="fg-bar" x="88" y="172" width="110" height="7" rx="3.5"/>
+      <rect class="fg-bar" x="88" y="188" width="90" height="7" rx="3.5"/>
+      <rect class="fg-bar" x="88" y="204" width="60" height="7" rx="3.5"/>
+    </g>
+    <g>
+      <rect class="fg-doc" x="75" y="52" width="150" height="196" rx="10"/>
+      <rect class="fg-img-on" x="85" y="62" width="130" height="92" rx="6"/>
+      <circle class="fg-sun" cx="196" cy="80" r="7"/>
+      <path class="fg-white" d="M129.0 148 Q145.0 116.5 148.5 78 M171.0 148 Q155.0 116.5 151.5 78 M137.4 148 Q150 128.4 162.6 148 M139.9 125.6 H160.1 M145.0 104.6 H155.0 M150 78 V69.6"/>
+      <rect class="fg-mention" x="119" y="165" width="40" height="22" rx="3"/>
+      <text class="fg-body" x="116" y="181" text-anchor="end">I love</text>
+      <text class="fg-body" x="123" y="181">Paris</text>
+      <text class="fg-body" x="161" y="181">!</text>
+      <rect class="fg-bar" x="88" y="200" width="110" height="7" rx="3.5"/>
+      <rect class="fg-bar" x="88" y="216" width="80" height="7" rx="3.5"/>
+    </g>
 
-        <!-- entity graph, drawn beneath the nodes -->
-        <path class="hr-edge" d="M730 188 L912 184"/>
-        <path class="hr-edge" d="M726 198 L798 226"/>
-        <path class="hr-edge" d="M910 192 L808 224"/>
-        <path class="hr-edge" d="M798 234 L734 286"/>
-        <path class="hr-edge" d="M810 234 L924 280"/>
-        <path class="hr-edge" d="M734 294 L922 286"/>
+    <path class="fg-edge" d="M670 66 L702 62"/>
+    <path class="fg-edge" d="M620 101 L640 125"/>
+    <path class="fg-edge" d="M640 181 L620 205"/>
+    <path class="fg-edge" d="M700 181 L716 220"/>
+    <path class="fg-edge" d="M670 236 L700 236"/>
+    <rect class="fg-node" x="702" y="50" width="38" height="26" rx="6"/>
+    <rect class="fg-node" x="700" y="222" width="40" height="26" rx="6"/>
 
-        <!-- ambiguous candidate links -->
-        <path class="hr-ghost" d="M368 174 C 480 150, 560 150, 684 178"/>
-        <path class="hr-ghost" d="M368 262 C 480 296, 560 296, 686 288"/>
+    <path class="fg-cand" d="M232 150 C 360 150, 420 153, 550 153"/>
+    <path class="fg-cand" d="M232 150 C 360 150, 380 233, 470 233"/>
+    <path class="fg-link" d="M232 150 C 360 150, 380 73, 467 73" marker-end="url(#fg-arrow)"/>
 
-        <g transform="translate(690 166)">
-          <rect class="hr-node" x="0" y="0" width="76" height="52" rx="10"/>
-          <rect class="b4" x="7" y="7" width="22" height="38" rx="6"/>
-          <rect class="hr-line" x="36" y="17" width="24" height="6" rx="3"/>
-          <rect class="hr-line" x="36" y="29" width="17" height="6" rx="3"/>
-        </g>
-        <g transform="translate(876 158)">
-          <rect class="hr-node" x="0" y="0" width="76" height="52" rx="10"/>
-          <rect class="b5" x="7" y="7" width="22" height="38" rx="6"/>
-          <rect class="hr-line" x="36" y="17" width="24" height="6" rx="3"/>
-          <rect class="hr-line" x="36" y="29" width="17" height="6" rx="3"/>
-        </g>
-        <g transform="translate(764 204)">
-          <rect class="hr-node hr-node-on" x="0" y="0" width="76" height="52" rx="10"/>
-          <rect class="b2" x="7" y="7" width="22" height="38" rx="6"/>
-          <rect class="hr-line" x="36" y="17" width="24" height="6" rx="3"/>
-          <rect class="hr-line" x="36" y="29" width="17" height="6" rx="3"/>
-        </g>
-        <g transform="translate(692 264)">
-          <rect class="hr-node" x="0" y="0" width="76" height="52" rx="10"/>
-          <rect class="b1" x="7" y="7" width="22" height="38" rx="6"/>
-          <rect class="hr-line" x="36" y="17" width="24" height="6" rx="3"/>
-          <rect class="hr-line" x="36" y="29" width="17" height="6" rx="3"/>
-        </g>
-        <g transform="translate(892 258)">
-          <rect class="hr-node" x="0" y="0" width="76" height="52" rx="10"/>
-          <rect class="b3" x="7" y="7" width="22" height="38" rx="6"/>
-          <rect class="hr-line" x="36" y="17" width="24" height="6" rx="3"/>
-          <rect class="hr-line" x="36" y="29" width="17" height="6" rx="3"/>
-        </g>
-
-        <!-- the resolved link -->
-        <path class="hr-main" d="M362 218 C 480 221, 620 223, 750 220" marker-end="url(#arr-main)"/>
-        <text class="hr-tag" x="529" y="196" text-anchor="middle">one mention, one entity</text>
-      </svg>
-      <figcaption>Figure 1. Multimodal entity linking. A mention in a document (text and image) is resolved to one entity of a knowledge base whose entries are themselves described by text and images.</figcaption>
+    <g>
+      <rect class="fg-card fg-card-on" x="470" y="45" width="200" height="56" rx="8"/>
+      <rect class="fg-img-on" x="478" y="53" width="40" height="40" rx="5"/>
+      <path class="fg-white" d="M489.6 84 Q496.0 71.4 496.5 56 M506.4 84 Q500.0 71.4 499.5 56 M493.0 84 Q498 76.2 503.0 84 M494.0 75.0 H502.0 M496.0 66.6 H500.0 M498 56 V52.6"/>
+      <text class="fg-name" x="528" y="70">Paris</text>
+      <text class="fg-desc" x="528" y="88">Capital of France</text>
+    </g>
+    <g>
+      <rect class="fg-card" x="550" y="125" width="200" height="56" rx="8"/>
+      <rect class="fg-img" x="558" y="133" width="40" height="40" rx="5"/>
+      <g class="fg-glyph"><circle cx="578" cy="148" r="6.5"/><path d="M566 168 C566 157 590 157 590 168"/></g>
+      <text class="fg-name" x="608" y="150">Paris Hilton</text>
+      <text class="fg-desc" x="608" y="168">Media personality</text>
+    </g>
+    <g>
+      <rect class="fg-card" x="470" y="205" width="200" height="56" rx="8"/>
+      <rect class="fg-img" x="478" y="213" width="40" height="40" rx="5"/>
+      <g class="fg-glyph"><path d="M487 222 H509 M489 225 H507 M491 225 V243 M496 225 V243 M500 225 V243 M505 225 V243 M489 243 H507 M487 246 H509"/></g>
+      <text class="fg-name" x="528" y="230">Paris (mythology)</text>
+      <text class="fg-desc" x="528" y="248">Trojan prince in the Iliad</text>
+    </g>
+  </svg>
+      <figcaption><span class="fig-label">Figure&nbsp;1.</span> Multimodal entity linking. From the text alone, the mention <i>Paris</i> could refer to several entities of the knowledge base; the image resolves the ambiguity and the mention is linked to the city.</figcaption>
     </figure>
 
       <p class="keywords"><i>Keywords:</i> multimodal embeddings, multimodal entity linking, multimodal retrieval, vision-language models, representation learning.</p>
@@ -221,13 +198,27 @@
           <div>
             <a class="pub-title" href="https://arxiv.org/abs/2606.11749" target="_blank" rel="noopener">FAST-MEL: A Fast, Accurate, and Storage Efficient Solution for Multimodal Entity Linking</a><br>
             <b>Thomas Derrien</b>, Laurent Amsaleg, Pascale Sébillot<br>
-            <i>SIGIR 2026</i> (short paper)<br>
+            <i>SIGIR&nbsp;2026</i> (short paper)<br>
             <span class="pub-links">
               [<a href="https://arxiv.org/abs/2606.11749" target="_blank" rel="noopener">arXiv</a>]
               [<a href="https://arxiv.org/pdf/2606.11749" target="_blank" rel="noopener">pdf</a>]
-              [<a href="assets/publis/fast_mel.bib" download>bib</a>]
+              [<button class="bib-toggle" type="button" aria-expanded="false" aria-controls="bib-fastmel">bib</button>]
               [<a href="https://github.com/to2002td-cpu/FASTMEL" target="_blank" rel="noopener">code</a>]
             </span>
+            <div class="bib" id="bib-fastmel" hidden>
+              <pre>@inproceedings{derrien2026fastmel,
+  title     = {FAST-MEL: A Fast, Accurate, and Storage
+               Efficient Solution for Multimodal
+               Entity Linking},
+  author    = {Derrien, Thomas and Amsaleg, Laurent
+               and S{\'e}billot, Pascale},
+  booktitle = {Proceedings of the 49th International
+               ACM SIGIR Conference on Research and
+               Development in Information Retrieval},
+  year      = {2026}
+}</pre>
+              <p><button class="bib-copy" type="button">copy</button>, <a href="assets/publis/fast_mel.bib" download>download .bib</a></p>
+            </div>
             <p class="pub-summary">
               An encoder-based approach that represents text and image mentions as compact fixed-size vectors.
               It matches the accuracy of state-of-the-art systems while running orders of magnitude faster and using an order of magnitude less storage.
@@ -242,17 +233,17 @@
 
       <h3>Education</h3>
       <table class="cv">
-        <tr><td>2025 &ndash; present</td><td><b>PhD in Computer Science, Archimedia, IRISA</b>, University of Rennes, France. Supervised by Laurent Amsaleg and Pascale Sébillot.</td></tr>
-        <tr><td>2022 &ndash; 2025</td><td><b>Engineering degree / MSc, INSA Rennes</b>, Rennes, France. Computer science and data science.</td></tr>
-        <tr><td>2020 &ndash; 2022</td><td><b>BSc in Mathematics, University of Rennes</b>, Rennes, France.</td></tr>
+        <tr><td>2025&ndash;present</td><td><b>PhD in Computer Science, Archimedia, IRISA</b>, University of Rennes, France. Supervised by Laurent Amsaleg and Pascale Sébillot.</td></tr>
+        <tr><td>2022&ndash;2025</td><td><b>Engineering degree / MSc, <abbr title="Institut national des sciences appliquées">INSA</abbr> Rennes</b>, Rennes, France. Computer science and data science.</td></tr>
+        <tr><td>2020&ndash;2022</td><td><b>BSc in Mathematics, University of Rennes</b>, Rennes, France.</td></tr>
       </table>
 
       <h3>Experience</h3>
       <table class="cv">
-        <tr><td>Oct 2025 &ndash; present</td><td><b>PhD student, Archimedia, IRISA</b>, Rennes, France. Research on multimodal entity linking, multimodal retrieval, and efficient representation learning.</td></tr>
-        <tr><td>Feb &ndash; Aug 2025</td><td><b>Research intern, Archimedia, IRISA</b>, Rennes, France. Research on multimodal entity linking.</td></tr>
-        <tr><td>Summer 2024</td><td><b>Systems engineer intern, French Ministry of the Interior</b>, Rennes, France. Worked on infrastructure and deployment workflows using GitLab CI/CD, Docker, and Ansible.</td></tr>
-        <tr><td>Summer 2023</td><td><b>Data scientist intern, INCI, CNRS</b>, Strasbourg, France. Contributed to neuroscience data analysis and processing for research on mesolimbic dopaminergic pathway alterations in a murine model of depression induced by chronic pain. Work can be found in this <a href="https://theses.hal.science/tel-04892874" target="_blank" rel="noopener">thesis</a>.</td></tr>
+        <tr><td>Oct&nbsp;2025&ndash;present</td><td><b>PhD student, Archimedia, IRISA</b>, Rennes, France. Research on multimodal entity linking, multimodal retrieval, and efficient representation learning.</td></tr>
+        <tr><td>Feb&ndash;Aug&nbsp;2025</td><td><b>Research intern, Archimedia, IRISA</b>, Rennes, France. Research on multimodal entity linking.</td></tr>
+        <tr><td>Summer&nbsp;2024</td><td><b>Systems engineer intern, French Ministry of the Interior</b>, Rennes, France. Worked on infrastructure and deployment workflows using GitLab CI/CD, Docker, and Ansible.</td></tr>
+        <tr><td>Summer&nbsp;2023</td><td><b>Data scientist intern, <abbr title="Institut des neurosciences cellulaires et intégratives">INCI</abbr>, <abbr title="Centre national de la recherche scientifique">CNRS</abbr></b>, Strasbourg, France. Contributed to neuroscience data analysis and processing for research on mesolimbic dopaminergic pathway alterations in a murine model of depression induced by chronic pain. Work can be found in this <a href="https://theses.hal.science/tel-04892874" target="_blank" rel="noopener">thesis</a>.</td></tr>
       </table>
     </section>
 
