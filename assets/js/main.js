@@ -1,46 +1,22 @@
-// ── Smooth scroll for anchor links ───────────────────────────────────────────
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-  });
-});
+// Theme toggle: the button shows the theme it switches to
+const root = document.documentElement;
+const toggle = document.getElementById('themeToggle');
 
-// ── Active nav highlight ──────────────────────────────────────────────────────
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.side-nav a');
+function label() {
+  toggle.textContent = root.dataset.theme === 'dark' ? 'light' : 'dark';
+}
 
-const sectionObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.id;
-      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + id));
-    }
-  });
-}, { rootMargin: '-30% 0px -60% 0px' });
-
-sections.forEach(s => sectionObserver.observe(s));
-
-// ── Staggered scroll reveal ───────────────────────────────────────────────────
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    entry.target.classList.toggle('is-visible', entry.isIntersecting);
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-
-document.querySelectorAll('.reveal-item').forEach(el => revealObserver.observe(el));
-
-// ── Theme toggle ──────────────────────────────────────────────────────────────
-const themeToggle = document.getElementById('themeToggle');
-if (themeToggle) {
-  themeToggle.addEventListener('click', () => {
-    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem('theme', next);
+if (toggle) {
+  label();
+  toggle.addEventListener('click', () => {
+    root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+    label();
   });
 }
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-  if (!localStorage.getItem('theme'))
-    document.documentElement.dataset.theme = e.matches ? 'dark' : 'light';
+  let saved = null;
+  try { saved = localStorage.getItem('theme'); } catch (e) {}
+  if (!saved) { root.dataset.theme = e.matches ? 'dark' : 'light'; if (toggle) label(); }
 });
