@@ -39,6 +39,7 @@
     "url": "https://to2002td-cpu.github.io/thomas-derrien.github.io/",
     "sameAs": [
       "https://scholar.google.com/citations?user=Uqv13wMAAAAJ&hl=en",
+      "https://orcid.org/0009-0004-8942-0796",
       "https://github.com/to2002td-cpu",
       "https://huggingface.co/Thomas-DERRIEN"
     ]
@@ -63,6 +64,7 @@
     <p class="masthead-contact">
       <a href="mailto:thomas.derrien@irisa.fr">thomas.derrien@irisa.fr</a><br>
       <a href="https://scholar.google.com/citations?user=Uqv13wMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a>,
+      <a href="https://orcid.org/0009-0004-8942-0796" target="_blank" rel="noopener">ORCID</a>,
       <a href="https://github.com/to2002td-cpu" target="_blank" rel="noopener">GitHub</a>,
       <a href="https://huggingface.co/Thomas-DERRIEN" target="_blank" rel="noopener">Hugging Face</a>
     </p>
@@ -70,6 +72,7 @@
       <a href="#news">News</a>
       <a href="#research">Research</a>
       <a href="#publications">Publications</a>
+      <a href="#teaching">Teaching</a>
       <a href="#cv">CV</a>
       <a href="#contact">Contact</a>
       <button id="themeToggle" class="theme-toggle" type="button">dark</button>
@@ -81,8 +84,7 @@
     <section id="about">
       <p>
         I am a PhD student in the Archimedia team at IRISA, supervised by Laurent Amsaleg and Pascale Sébillot.
-        I work on <em>multimodal entity linking</em>: connecting the entities mentioned in text and shown in images to the knowledge-base entries they refer to.
-        I am especially interested in multimodal representation learning, retrieval, and efficient search.
+        My research is on <em>multimodal entity linking</em>, with a particular interest in representation learning, retrieval, and efficient search.
       </p>
     </section>
 
@@ -97,14 +99,14 @@
     <section id="research">
       <h2>Research</h2>
       <p>
-        My research focuses on methods for linking named entities in ambiguous multimodal corpora.
-        In multimodal entity linking, the objective is to map a mention in unstructured data to its corresponding entity in a knowledge base by leveraging both textual and visual information.
-        Although combining modalities introduces additional complexity, it also provides complementary signals that can resolve ambiguities left open by text alone.
+        Entity linking maps a mention, such as a name in a sentence, to the entry it refers to in a knowledge base like Wikipedia or Wikidata.
+        In the multimodal setting, mentions and entities come with both text and images, and the image is often what settles an ambiguous name (Figure&nbsp;1).
       </p>
       <p>
-        I am particularly interested in retrieval-oriented representations that make this process accurate, scalable, and efficient.
-        Multimodal embeddings and vision-language models are powerful tools for this task, but they often come with significant computational costs.
-        Developing methods that efficiently index and retrieve relevant entities while maintaining strong performance is a central focus of my work.
+        The strongest current systems rely on large vision-language models, which are accurate but slow and costly to store for knowledge bases of millions of entities.
+        I look for representations that keep this accuracy at a much lower cost.
+        In <a href="#publications">FAST-MEL</a>, mentions are encoded as compact fixed-size vectors, which makes linking orders of magnitude faster and an order of magnitude lighter in storage than state-of-the-art systems, at the same accuracy.
+        I also work on building datasets to evaluate these methods.
       </p>
 
       <figure class="research-figure">
@@ -181,7 +183,7 @@
       <text class="fg-desc" x="528" y="248">Trojan prince in the Iliad</text>
     </g>
   </svg>
-      <figcaption><span class="fig-label">Figure&nbsp;1.</span> Multimodal entity linking. From the text alone, the mention <i>Paris</i> could refer to several entities of the knowledge base; the image resolves the ambiguity and the mention is linked to the city.</figcaption>
+      <figcaption><span class="fig-label">Figure&nbsp;1.</span> Multimodal entity linking. From the text alone, the mention <i>Paris</i> could refer to several entities of the knowledge base; the image helps to resolve the ambiguity and the mention is linked to the city.</figcaption>
     </figure>
 
       <p class="keywords"><i>Keywords:</i> multimodal embeddings, multimodal entity linking, multimodal retrieval, vision-language models, representation learning.</p>
@@ -202,6 +204,8 @@
             <span class="pub-links">
               [<a href="https://arxiv.org/abs/2606.11749" target="_blank" rel="noopener">arXiv</a>]
               [<a href="https://arxiv.org/pdf/2606.11749" target="_blank" rel="noopener">pdf</a>]
+              [<a href="https://doi.org/10.1145/3805712.3809860" target="_blank" rel="noopener">doi</a>]
+              [<a href="https://hal.science/hal-05689600" target="_blank" rel="noopener">HAL</a>]
               [<button class="bib-toggle" type="button" aria-expanded="false" aria-controls="bib-fastmel">bib</button>]
               [<a href="https://github.com/to2002td-cpu/FASTMEL" target="_blank" rel="noopener">code</a>]
             </span>
@@ -215,7 +219,8 @@
   booktitle = {Proceedings of the 49th International
                ACM SIGIR Conference on Research and
                Development in Information Retrieval},
-  year      = {2026}
+  year      = {2026},
+  doi       = {10.1145/3805712.3809860}
 }</pre>
               <p><button class="bib-copy" type="button">copy</button>, <a href="assets/publis/fast_mel.bib" download>download .bib</a></p>
             </div>
@@ -228,34 +233,40 @@
       </ol>
     </section>
 
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <p>
+        <b>Databases</b>, <abbr title="Institut national des sciences appliquées">INSA</abbr> Rennes, second year (STPI&nbsp;2), 2026&ndash;2027.
+        One semester of combined lectures and tutorials (CM-TD) and lab sessions (TP).
+      </p>
+    </section>
+
     <section id="cv">
       <h2>CV</h2>
+      <p>A full version is available in <a href="assets/Resume.pdf">PDF</a>.</p>
 
       <h3>Education</h3>
       <table class="cv">
         <tr><td>2025&ndash;present</td><td><b>PhD in Computer Science, Archimedia, IRISA</b>, University of Rennes, France. Supervised by Laurent Amsaleg and Pascale Sébillot.</td></tr>
-        <tr><td>2022&ndash;2025</td><td><b>Engineering degree / MSc, <abbr title="Institut national des sciences appliquées">INSA</abbr> Rennes</b>, Rennes, France. Computer science and data science.</td></tr>
-        <tr><td>2020&ndash;2022</td><td><b>BSc in Mathematics, University of Rennes</b>, Rennes, France.</td></tr>
+        <tr><td>2022&ndash;2025</td><td><b>Engineering degree / MSc, <abbr title="Institut national des sciences appliquées">INSA</abbr> Rennes</b>, Rennes, France. Specialization in data science; exchange semester in the MSc Data Science of the Berliner Hochschule für Technik, Berlin (fall 2024).</td></tr>
+        <tr><td>2020&ndash;2022</td><td><b>BSc in Mathematics and Applications, University of Rennes</b>, Rennes, France.</td></tr>
       </table>
 
       <h3>Experience</h3>
       <table class="cv">
         <tr><td>Oct&nbsp;2025&ndash;present</td><td><b>PhD student, Archimedia, IRISA</b>, Rennes, France. Research on multimodal entity linking, multimodal retrieval, and efficient representation learning.</td></tr>
         <tr><td>Feb&ndash;Aug&nbsp;2025</td><td><b>Research intern, Archimedia, IRISA</b>, Rennes, France. Research on multimodal entity linking.</td></tr>
-        <tr><td>Summer&nbsp;2024</td><td><b>Systems engineer intern, French Ministry of the Interior</b>, Rennes, France. Worked on infrastructure and deployment workflows using GitLab CI/CD, Docker, and Ansible.</td></tr>
-        <tr><td>Summer&nbsp;2023</td><td><b>Data scientist intern, <abbr title="Institut des neurosciences cellulaires et intégratives">INCI</abbr>, <abbr title="Centre national de la recherche scientifique">CNRS</abbr></b>, Strasbourg, France. Contributed to neuroscience data analysis and processing for research on mesolimbic dopaminergic pathway alterations in a murine model of depression induced by chronic pain. Work can be found in this <a href="https://theses.hal.science/tel-04892874" target="_blank" rel="noopener">thesis</a>.</td></tr>
+        <tr><td>Jun&ndash;Sep&nbsp;2024</td><td><b>Systems engineer intern, French Ministry of the Interior</b>, Rennes, France. Worked on infrastructure and deployment workflows using GitLab CI/CD, Docker, and Ansible.</td></tr>
+        <tr><td>Jun&ndash;Jul&nbsp;2023</td><td><b>Data scientist intern, <abbr title="Institut des neurosciences cellulaires et intégratives">INCI</abbr>, <abbr title="Centre national de la recherche scientifique">CNRS</abbr></b>, Strasbourg, France. Contributed to neuroscience data analysis and processing for research on mesolimbic dopaminergic pathway alterations in a murine model of depression induced by chronic pain. Work can be found in this <a href="https://theses.hal.science/tel-04892874" target="_blank" rel="noopener">thesis</a>.</td></tr>
       </table>
     </section>
 
     <section id="contact">
       <h2>Contact</h2>
       <p>
-        I am happy to talk about research and collaborations. Write to me at
-        <a href="mailto:thomas.derrien@irisa.fr">thomas.derrien@irisa.fr</a>, find my papers on
-        <a href="https://scholar.google.com/citations?user=Uqv13wMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>,
-        or my code on <a href="https://github.com/to2002td-cpu" target="_blank" rel="noopener">GitHub</a>.
+        The best way to reach me is by email, at <a href="mailto:thomas.derrien@irisa.fr">thomas.derrien@irisa.fr</a>.
+        My office is at IRISA, on the Beaulieu campus in Rennes.
       </p>
-      <p>I am based at IRISA, on the Beaulieu campus in Rennes.</p>
     </section>
 
     <footer>
